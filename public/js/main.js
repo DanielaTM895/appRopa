@@ -1,9 +1,12 @@
-const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa", {
-  mode: "cors",
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-  },
-})
+const promiseOfSomeData = fetch(
+  "https://practica-servidor.herokuapp.com/api/ropa",
+  {
+    mode: "cors",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  }
+)
   .then((r) => r.json())
   .then((data) => {
     console.log("in async");
