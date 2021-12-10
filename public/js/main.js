@@ -13,7 +13,7 @@ let espacioInfantil = document.getElementById("espacioInfantil");
 let infantilTemplate = "";
 
 window.onload = async () => {
-  let someData = (await promiseOfSomeData).json();
+  let someData = await promiseOfSomeData;
   console.log("onload: " + someData);
   someData.map((p) => {
     console.log(p.categoria);
