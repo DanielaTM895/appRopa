@@ -1,8 +1,6 @@
 const d = document;
 
-const data = fetch("https://ropaserver.herokuapp.com/api/ropa", {
-  mode: "no-cors",
-})
+const data = fetch("https://ropaserver.herokuapp.com/api/ropa")
   .then((r) => r.json())
   .then((data) => {
     console.log("in async");
