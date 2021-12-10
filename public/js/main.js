@@ -2,7 +2,7 @@ const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa", {
   mode: "no-cors",
 }).then((data) => {
   console.log("in async");
-  return data;
+  return data.json();
 });
 
 let espacioDama = document.getElementById("espacioDama");
