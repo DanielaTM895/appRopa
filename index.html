@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="public/img/favicon.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    <title>Tienda de ropa - Online</title>
+  </head>
+  <body>
+    <!--Snack bar and Modal-->
+    <div id="snackbar">
+      <a href="" id="launchUpdate"> Nueva version disponible. Descargar </a>
+    </div>
+    <div
+      style="height: 500px"
+      class="offcanvas offcanvas-bottom"
+      tabindex="-1"
+      id="offcanvasBottom"
+      aria-labelledby="offcanvasBottomLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="canvasBottomLabel">
+          Nombre del articulo
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div id="canvasBottomBody" class="offcanvas-body small">
+        <form class="formCarrito">
+          <input type="hidden" id="id" name="id" value="10" />
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <img
+                  class="img-fluid"
+                  src="https://www.petit-bateau.es/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw53f9d247/PB/5143601.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="col-sm-6">
+                <br />
+                <p class="fst-italic fs-5">Precio: $150 - Disponibles: 10</p>
+                <p class="fw-bolder">Descripcion</p>
+                <p>
+                  Hola! esta es una descripcion completa del articulo que has
+                  seleccionado, este es un texto de prueba para saber que tan
+                  larga puede ser la descripcion. Si quieres agregarlo al
+                  carrito, adelante
+                </p>
+                <p class="fw-bolder">Tama&ntilde;o</p>
+                <p>
+                  <select
+                    aria-label=".form-select-sm example"
+                    class="form-select"
+                    name="size"
+                    id="size"
+                  >
+                    <option selected>Seleccionar</option>
+                    <option value="x-small">Extra peque&ntilde;o</option>
+                    <option value="small">Peque&ntilde;o</option>
+                    <option value="medium">Mediano</option>
+                    <option value="large">Grande</option>
+                    <option value="x-large">Extra Grande</option>
+                  </select>
+                </p>
+                <p class="fw-bolder">Color</p>
+                <p>
+                  <select
+                    aria-label=".form-select-sm example"
+                    class="form-select"
+                    name="color"
+                    id="color"
+                  >
+                    <option selected>Seleccionar</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="negro">Negro</option>
+                    <option value="rojo">Rojo</option>
+                    <option value="azul">Azul</option>
+                  </select>
+                </p>
+                <p class="fw-bolder">Cantidad</p>
+                <p>
+                  <select
+                    name="cantidad"
+                    id="cant"
+                    class="form-select"
+                    aria-label=".form-select-sm example"
+                  >
+                    <option selected>Seleccionar</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div class="row justify-content-end">
+              <div class="col-sm-2">
+                <button
+                  name="addCarrito"
+                  id="addCarrito"
+                  class="addCarrito btn btn-success"
+                >
+                  Agregar
+                  <i class="bi bi-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div
+      style="width: 700px"
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasLeft"
+      aria-labelledby="offcanvasLeftLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 id="offcanvasLefttLabel">Articulos en carrito</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <form class="formPedido">
+          <input type="hidden" id="id" name="id" value="10" />
+          <div class="container-fluid justify-content-center">
+            <div class="row">
+              <div class="col-sm-3">
+                <img
+                  class="w-75 img-fluid"
+                  src="https://www.petit-bateau.es/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw53f9d247/PB/5143601.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="col-sm-4">
+                <p class="fw-bolder">Nombre del articulo</p>
+                <p class="fst-italic">Precio unitario: $150</p>
+                <p class="fst-italic">Cantidad: 2</p>
+                <p class="fst-italic">Color: Azul</p>
+                <p class="fst-italic">Tama&ntilde;o: Mediano</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="fw-bolder">Opciones del articulo</p>
+                <button class="btn btn-outline-danger">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div class="row justify-content-end">
+              <div class="col-sm-5">
+                <button
+                  name="addPedido"
+                  id="addPedido"
+                  class="addPedido btn btn-outline-success"
+                >
+                  Confirmar pedido
+                  <i class="bi bi-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Snackbar and Modal-->
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="public/img/logo.jpg"
+              alt=""
+              width="30"
+              height="30"
+              class="d-inline-block align-text-top"
+            />
+            +Ropa
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Categorias</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Mas
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Dama</a></li>
+                  <li><a class="dropdown-item" href="#">Caballero</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Infantil</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info position-relative"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasLeft"
+                    aria-controls="offcanvasLeft"
+                  >
+                    Carrito <i class="bi bi-cart"></i>
+                    <span
+                      class="
+                        position-absolute
+                        top-0
+                        start-100
+                        translate-middle
+                        p-2
+                        bg-danger
+                        border border-light
+                        rounded-circle
+                      "
+                    >
+                      <span class="visually-hidden">Nuevos articulos</span>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container mt-2">
+      <h2>Bienvenido a +Ropa</h2>
+      <p>
+        Un lugar donde encontraras toda la ropa que necesites al mejor precio y
+        mejor calidad.
+      </p>
+
+      <div class="justify-content-center">
+        <form class="d-flex formBusqueda">
+          <input
+            class="form-control me-1"
+            id="inputBuscar"
+            type="search"
+            placeholder="Buscar"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-primary" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <hr />
+      <div class="inicio">
+        <p>Ropa para dama</p>
+        <hr />
+        <div class="container-fluid justify-content-center">
+          <div id="espacioDama" class="ropaGrid"></div>
+        </div>
+        <hr />
+        <p>Ropa para caballero</p>
+        <hr />
+        <div class="container-fluid justify-content-center">
+          <div id="espacioCaballero" class="ropaGrid"></div>
+        </div>
+        <hr />
+        <p>Ropa infantil</p>
+        <hr />
+        <div class="container-fluid justify-content-center">
+          <div id="espacioInfantil" class="ropaGrid"></div>
+        </div>
+        <hr />
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="public/js/carrito.js"></script>
+    <script src="public/js/main.js"></script>
+  </body>
+</html>
