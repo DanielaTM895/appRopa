@@ -1,4 +1,4 @@
-const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa")
+const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa",{mode:'no-cors'})
   .then((r) => r.json())
   .then((data) => {
     console.log("in async");
