@@ -1,7 +1,7 @@
 const d = document;
 
 const data = fetch("https://practica-servidor.herokuapp.com/api/ropa", {
-  mode: "cors",
+  mode: "no-cors",
   headers: {
     "Access-Control-Allow-Origin": "*",
   },
