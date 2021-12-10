@@ -1,11 +1,6 @@
 const d = document;
 
-const data = fetch("https://practica-servidor.herokuapp.com/api/ropa", {
-  mode: "no-cors",
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-  },
-})
+const data = fetch("https://practica-servidor.herokuapp.com/api/ropa")
   .then((r) => r.json())
   .then((data) => {
     console.log("in async");
