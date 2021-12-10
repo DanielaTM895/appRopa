@@ -1,9 +1,9 @@
-const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa")
-  .then((r) => r.json())
-  .then((data) => {
-    console.log("in async");
-    return data;
-  });
+const promiseOfSomeData = fetch("https://ropaserver.herokuapp.com/api/ropa", {
+  mode: "no-cors",
+}).then((data) => {
+  console.log("in async");
+  return data;
+});
 
 let espacioDama = document.getElementById("espacioDama");
 let damaTemplate = "";
