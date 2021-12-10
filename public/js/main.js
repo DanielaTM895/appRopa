@@ -1,11 +1,5 @@
 const promiseOfSomeData = fetch(
-  "https://practica-servidor.herokuapp.com/api/ropa",
-  {
-    mode: "no-cors",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  }
+  "https://practica-servidor.herokuapp.com/api/ropa"
 )
   .then((r) => r.json())
   .then((data) => {
