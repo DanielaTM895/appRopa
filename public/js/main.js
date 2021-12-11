@@ -14,7 +14,6 @@ let infantilTemplate = "";
 
 window.onload = async () => {
   let someData = await promiseOfSomeData;
-  console.log("onload: " + someData);
   someData.map((p) => {
     console.log(p.categoria);
     let card = `<div class="ropaCard">

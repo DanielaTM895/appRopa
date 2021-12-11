@@ -68,16 +68,11 @@ buscar.addEventListener("keyup", async () => {
 
       pintar = pintar + card;
 
-      console.log(pintar);
-
       grid.innerHTML = pintar;
     }
   });
 });
 
-function buscarRopa(texto) {
-  let ropaB = "";
-}
 function capita(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
