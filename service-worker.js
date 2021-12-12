@@ -8,6 +8,7 @@ const files = [
   "README.md",
   "public/css/styles.css",
   "public/js/main.js",
+  "public/js/carrito.js",
   "index.html",
 ];
 const inmutable_files = [
@@ -30,11 +31,22 @@ self.addEventListener("install", (event) => {
   event.waitUntil(Promise.all([guardarCacheStatic, guardarCacheInmutable]));
 });
 
-//network first
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    fetch(event.request).then((respuestaRed) => {
-      return respuestaRed || caches.match(event.request);
+self.addEventListener("fetch", (e) => {
+  e.respondWith(
+    caches.match(e.request).then((r) => {
+      console.log("Obteniendo recurso: " + e.request.url);
+      return (
+        r ||
+        fetch(e.request).then((response) => {
+          return caches.open(cacheDinamyc).then((cache) => {
+            console.log(
+              "Almacenando el nuevo recurso: " + e.request.url
+            );
+            cache.put(e.request, response.clone());
+            return response;
+          });
+        })
+      );
     })
   );
 });
