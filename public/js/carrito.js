@@ -31,7 +31,6 @@ formC.addEventListener("submit", async (e) => {
       total = total + data.precio * cantidad;
       divTotal.innerHTML = "Total a pagar: $" + total;
 
-      console.log("Hola!" + data.id + " total: " + total);
       let item = `<div class="col-sm-3">
                 <img
                   class="w-75 img-fluid"
@@ -82,7 +81,6 @@ formP.addEventListener("submit", (e) => {
 formB.addEventListener("submit", (e) => {
   e.preventDefault();
   let id = d.getElementById("id").value;
-  console.log(id);
 });
 
 let pintar = "";
@@ -146,7 +144,6 @@ async function obtener($id) {
 
   sData.map((data) => {
     if (id.value !== "" && data.id === $id) {
-      console.log(data.nombre);
       titulo.innerHTML = data.nombre;
       imagen.src = data.imagen;
       precioStock.innerHTML =
