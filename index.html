@@ -45,7 +45,7 @@
         ></button>
       </div>
       <div id="canvasBottomBody" class="offcanvas-body small">
-        <form class="formCarrito">
+        <form class="formCarrito" id="formCarrito">
           <input
             required
             type="hidden"
@@ -86,11 +86,13 @@
                     id="size"
                   >
                     <option selected>Seleccionar</option>
-                    <option value="x-small">Extra peque&ntilde;o</option>
-                    <option value="small">Peque&ntilde;o</option>
-                    <option value="medium">Mediano</option>
-                    <option value="large">Grande</option>
-                    <option value="x-large">Extra Grande</option>
+                    <option value="Extra peque&ntilde;o">
+                      Extra peque&ntilde;o
+                    </option>
+                    <option value="Peque&ntilde;o">Peque&ntilde;o</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                    <option value="Extra Grande">Extra Grande</option>
                   </select>
                 </p>
                 <p class="fw-bolder">Color</p>
@@ -103,10 +105,10 @@
                     id="color"
                   >
                     <option selected>Seleccionar</option>
-                    <option value="blanco">Blanco</option>
-                    <option value="negro">Negro</option>
-                    <option value="rojo">Rojo</option>
-                    <option value="azul">Azul</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Azul">Azul</option>
                   </select>
                 </p>
                 <p class="fw-bolder">Cantidad</p>
@@ -128,7 +130,6 @@
                 </p>
               </div>
             </div>
-            <hr />
             <div class="row justify-content-end">
               <div class="col-sm-2">
                 <button
@@ -164,42 +165,22 @@
       </div>
       <div class="offcanvas-body">
         <form class="formPedido">
-          <input type="hidden" id="id" name="id" value="10" />
-          <div class=" containerCarrito container-fluid justify-content-center">
-            <div class="row">
-              <div class="col-sm-3">
-                <img
-                  class="w-75 img-fluid"
-                  src="https://www.petit-bateau.es/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw53f9d247/PB/5143601.jpg"
-                  alt=""
-                />
-              </div>
-              <div class="col-sm-4">
-                <p class="fw-bolder">Nombre del articulo</p>
-                <p class="fst-italic">Precio unitario: $150</p>
-                <p class="fst-italic">Cantidad: 2</p>
-                <p class="fst-italic">Color: Azul</p>
-                <p class="fst-italic">Tama&ntilde;o: Mediano</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="fw-bolder">Opciones del articulo</p>
-                <button class="btn btn-outline-danger">
-                  <i class="bi bi-trash"></i> Eliminar
-                </button>
-              </div>
-            </div>
-            <hr />
-            <div class="row justify-content-end">
-              <div class="col-sm-5">
-                <button
-                  name="addPedido"
-                  id="addPedido"
-                  class="addPedido btn btn-outline-success"
-                >
-                  Confirmar pedido
-                  <i class="bi bi-cart-plus"></i>
-                </button>
-              </div>
+          <div
+            id="containerCarrito"
+            class="containerCarrito container-fluid justify-content-center"
+          ></div>
+          <div class="row justify-content-end">
+            <div class="col-sm-4" id="total"></div>
+            <div class="col-sm-5">
+              <button
+                disabled
+                name="addPedido"
+                id="addPedido"
+                class="addPedido btn btn-outline-success"
+              >
+                Confirmar pedido
+                <i class="bi bi-cart-plus"></i>
+              </button>
             </div>
           </div>
         </form>

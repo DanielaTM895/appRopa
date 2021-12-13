@@ -1,5 +1,5 @@
 const d = document;
-const pedidoCarrito = "";
+let total = 0;
 
 const data = fetch("https://ropaserver.herokuapp.com/api/ropa")
   .then((r) => r.json())
@@ -18,30 +18,65 @@ formC.addEventListener("submit", async (e) => {
   let sData = await data;
 
   let id = d.getElementById("idIndividual").value;
+  const rowCarrito = d.createElement("div");
+  let containerCarrito = d.querySelector(".containerCarrito");
+  let divTotal = d.getElementById("total");
 
-  const infoRow = "";
   let size = d.getElementById("size").value;
   let color = d.getElementById("color").value;
   let cantidad = d.getElementById("cantidad").value;
 
   sData.map((data) => {
-    console.log("Aqui si: " + id + " - " + data.id);
     if (id == data.id) {
-      console.log("Hola!" + data.id);
+      total = total + data.precio * cantidad;
+      divTotal.innerHTML = "Total a pagar: $" + total;
+
+      console.log("Hola!" + data.id + " total: " + total);
+      let item = `<div class="col-sm-3">
+                <img
+                  class="w-75 img-fluid"
+                  src="${data.imagen}"
+                  alt=""
+                />
+              </div>
+              <div class="col-sm-4">
+                <p class="fw-bolder">${data.nombre}</p>
+                <p class="fst-italic">Precio unitario: $${data.precio}</p>
+                <p class="fst-italic">Cantidad: ${cantidad}</p>
+                <p class="fst-italic">Color: ${color}</p>
+                <p class="fst-italic">Tama&ntilde;o: ${size}</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="fw-bolder">Opciones del articulo</p>
+                <button onclick="borrarItem(itemCarrito${id})" class="btn btn-outline-danger">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </div>`;
+      rowCarrito.innerHTML = item;
     }
   });
 
-  let containerCarrito = d.querySelector(".containerCarrito");
+  if (!rowCarrito.classList.contains("row")) {
+    rowCarrito.className += "row itemCarrito";
+    rowCarrito.setAttribute("id", "itemCarrito" + id);
+  }
 
+  d.getElementById("formCarrito").reset();
 
-  alert("Agregado al carrito correctamente");
+  let h = d.createElement("hr");
+  rowCarrito.append(h);
+  containerCarrito.append(rowCarrito);
+
+  let btnAddPedido = d.querySelector(".addPedido");
+  btnAddPedido.removeAttribute("disabled");
+
+  alert("Agregado al carrito correctamente. ");
   d.getElementById("btnCloseCanvas").click();
 });
 
 formP.addEventListener("submit", (e) => {
   e.preventDefault();
-  let id = d.getElementById("id").value;
-  console.log(id);
+  console.log("Hola desde el formPedido");
 });
 
 formB.addEventListener("submit", (e) => {
@@ -121,3 +156,40 @@ async function obtener($id) {
     }
   });
 }
+
+function borrarItem(objeto) {
+  let divTotal = d.getElementById("total");
+  var items = d.querySelectorAll(".itemCarrito");
+
+  divTotal.innerHTML = "";
+
+  console.log(objeto.id);
+
+  imagen = document.getElementById(objeto.id);
+  if (!imagen) {
+    alert("El elemento selecionado no existe");
+  } else {
+    padre = imagen.parentNode;
+    padre.removeChild(imagen);
+  }
+
+  /* for (let i = 0; i < items.length; i++) {
+    if (objeto === items[i].id) {
+      var parent = items[i].parentElement;
+      parent.removeChild(items[i]);
+    } else {
+      alert("No existe el objeto");
+    }
+  } */
+}
+
+let btnAddPedido = d.querySelector("addPedido");
+
+/* btnAddPedido.addEventListener("click", () => {
+  var div = document.getElementById("containerCarrito");
+  if (div.hasChildNodes()) {
+    
+  } else {
+    alert("El carrito no tiene elementos para hacer un pedido.");
+  }
+}); */
