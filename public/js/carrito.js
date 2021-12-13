@@ -185,11 +185,7 @@ function borrarItem(objeto) {
 
 let btnAddPedido = d.querySelector("addPedido");
 
-/* btnAddPedido.addEventListener("click", () => {
-  var div = document.getElementById("containerCarrito");
-  if (div.hasChildNodes()) {
-    
-  } else {
-    alert("El carrito no tiene elementos para hacer un pedido.");
-  }
-}); */
+btnAddPedido.addEventListener("click", () => {
+  alert("Su pedido llegara pronto");
+  window.reload();
+});
