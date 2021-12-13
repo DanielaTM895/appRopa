@@ -22,9 +22,9 @@
   <body>
     <!--Snack bar and Modal-->
     <div id="snackbar">
-      <a href="" id="launchUpdate"> Nueva version disponible. Descargar </a>
+      <a href="" id="launchUpdate"> Version offline disponible </a>
     </div>
-    
+
     <div
       style="height: 500px"
       class="offcanvas offcanvas-bottom"
@@ -37,6 +37,7 @@
           Nombre del articulo
         </h5>
         <button
+          id="btnCloseCanvas"
           type="button"
           class="btn-close text-reset"
           data-bs-dismiss="offcanvas"
@@ -45,21 +46,31 @@
       </div>
       <div id="canvasBottomBody" class="offcanvas-body small">
         <form class="formCarrito">
-          <input type="hidden" id="id" name="id" value="10" />
+          <input
+            required
+            type="hidden"
+            class="idIndividual"
+            id="idIndividual"
+            name="ididIndividual"
+            value=""
+          />
           <div class="container">
             <div class="row">
               <div class="col-sm-4">
                 <img
-                  class="img-fluid"
+                  id="imgcanvas"
+                  class="img-fluid imgcanvas"
                   src="https://www.petit-bateau.es/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw53f9d247/PB/5143601.jpg"
                   alt=""
                 />
               </div>
               <div class="col-sm-6">
                 <br />
-                <p class="fst-italic fs-5">Precio: $150 - Disponibles: 10</p>
+                <p class="precioStock fst-italic fs-5">
+                  Precio: $150 - Disponibles: 10
+                </p>
                 <p class="fw-bolder">Descripcion</p>
-                <p>
+                <p class="desc-canvas">
                   Hola! esta es una descripcion completa del articulo que has
                   seleccionado, este es un texto de prueba para saber que tan
                   larga puede ser la descripcion. Si quieres agregarlo al
@@ -68,6 +79,7 @@
                 <p class="fw-bolder">Tama&ntilde;o</p>
                 <p>
                   <select
+                    required
                     aria-label=".form-select-sm example"
                     class="form-select"
                     name="size"
@@ -84,6 +96,7 @@
                 <p class="fw-bolder">Color</p>
                 <p>
                   <select
+                    required
                     aria-label=".form-select-sm example"
                     class="form-select"
                     name="color"
@@ -99,8 +112,9 @@
                 <p class="fw-bolder">Cantidad</p>
                 <p>
                   <select
+                    required
                     name="cantidad"
-                    id="cant"
+                    id="cantidad"
                     class="form-select"
                     aria-label=".form-select-sm example"
                   >
@@ -151,7 +165,7 @@
       <div class="offcanvas-body">
         <form class="formPedido">
           <input type="hidden" id="id" name="id" value="10" />
-          <div class="container-fluid justify-content-center">
+          <div class=" containerCarrito container-fluid justify-content-center">
             <div class="row">
               <div class="col-sm-3">
                 <img

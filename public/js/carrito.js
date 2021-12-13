@@ -1,4 +1,5 @@
 const d = document;
+const pedidoCarrito = "";
 
 const data = fetch("https://ropaserver.herokuapp.com/api/ropa")
   .then((r) => r.json())
@@ -11,10 +12,30 @@ const formB = d.querySelector(".formBusqueda");
 const formC = d.querySelector(".formCarrito");
 const formP = d.querySelector(".formPedido");
 
-formC.addEventListener("submit", (e) => {
+formC.addEventListener("submit", async (e) => {
   e.preventDefault();
-  let id = d.getElementById("id").value;
-  console.log(id);
+
+  let sData = await data;
+
+  let id = d.getElementById("idIndividual").value;
+
+  const infoRow = "";
+  let size = d.getElementById("size").value;
+  let color = d.getElementById("color").value;
+  let cantidad = d.getElementById("cantidad").value;
+
+  sData.map((data) => {
+    console.log("Aqui si: " + id + " - " + data.id);
+    if (id == data.id) {
+      console.log("Hola!" + data.id);
+    }
+  });
+
+  let containerCarrito = d.querySelector(".containerCarrito");
+
+
+  alert("Agregado al carrito correctamente");
+  d.getElementById("btnCloseCanvas").click();
 });
 
 formP.addEventListener("submit", (e) => {
@@ -75,4 +96,28 @@ buscar.addEventListener("keyup", async () => {
 
 function capita(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+async function obtener($id) {
+  let titulo = d.querySelector(".offcanvas-title");
+  let imagen = d.getElementById("imgcanvas");
+  let precioStock = d.querySelector(".precioStock");
+  let desc = d.querySelector(".desc-canvas");
+  let id = d.getElementById("idIndividual");
+
+  let sData = await data;
+
+  id.value = $id;
+
+  sData.map((data) => {
+    if (id.value !== "" && data.id === $id) {
+      console.log(data.nombre);
+      titulo.innerHTML = data.nombre;
+      imagen.src = data.imagen;
+      precioStock.innerHTML =
+        "Precio: $" + data.precio + " - Disponibles: " + data.disponibles;
+
+      desc.innerHTML = data.descripcion;
+    }
+  });
 }
